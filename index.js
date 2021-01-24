@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
-const config = require("./config.json");
-const covid = require("covidapi");
+// const config = require("./config.json");
+// const covid = require("covidapi");
 const covid19 = require("covid19-api");
 
 bot = new Discord.Client({ disableEveryone: true });
