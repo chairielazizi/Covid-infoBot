@@ -10,11 +10,15 @@ bot.on("ready", async () => {
   bot.user.setActivity("Awak", { type: "WATCHING" });
   const data = await covid19.getReports();
   const dataMalay = await covid19.getReportsByCountries(["malaysia"]);
+  const deaths = await covid19.getDeaths();
+
   console.log(data);
   console.log(data[0][0].cases);
   //   console.log(data[0][0].table);
   console.log(dataMalay);
   console.log(dataMalay[0][0].country);
+
+  console.log(deaths);
 });
 
 bot.on("message", async (message) => {
@@ -24,7 +28,18 @@ bot.on("message", async (message) => {
     // console.log(data);
     // console.log(data[0][0].cases);
     // console.log(dataMalay);
-    const covidembed = new Discord.MessageEmbed().setColor("RANDOM");
+    const covidembed = new Discord.MessageEmbed()
+      .setColor("RANDOM")
+      .addField("Country", dataMalay[0][0].country)
+      .addField("Cases", dataMalay[0][0].cases)
+      .addField("Deaths", dataMalay[0][0].deaths)
+      .addField("Recovered", dataMalay[0][0].recovered);
+
+    setInterval(() => {
+      var channel = bot.channels.cache.get("791078758572490763");
+      channel.send(covidembed);
+    }, "5000");
+    //   message.channel.send(covidembed);
   }
 });
 
