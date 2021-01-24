@@ -17,8 +17,19 @@ bot.on("ready", async () => {
   //   console.log(data[0][0].table);
   console.log(dataMalay);
   console.log(dataMalay[0][0].country);
-
   console.log(deaths);
+
+  const covidembed = new Discord.MessageEmbed()
+    .setColor("RANDOM")
+    .addField("Country", dataMalay[0][0].country)
+    .addField("Cases", dataMalay[0][0].cases)
+    .addField("Deaths", dataMalay[0][0].deaths)
+    .addField("Recovered", dataMalay[0][0].recovered);
+
+  setInterval(() => {
+    var channel = bot.channels.cache.get("802939353453166622");
+    channel.send(covidembed);
+  }, "86400000");
 });
 
 bot.on("message", async (message) => {
@@ -28,7 +39,7 @@ bot.on("message", async (message) => {
     // console.log(data);
     // console.log(data[0][0].cases);
     // console.log(dataMalay);
-    const covidembed = new Discord.MessageEmbed()
+    const covidembedcmd = new Discord.MessageEmbed()
       .setColor("RANDOM")
       .addField("Country", dataMalay[0][0].country)
       .addField("Cases", dataMalay[0][0].cases)
@@ -37,7 +48,7 @@ bot.on("message", async (message) => {
 
     setInterval(() => {
       var channel = bot.channels.cache.get("791078758572490763");
-      channel.send(covidembed);
+      channel.send(covidembedcmd);
     }, "5000");
     //   message.channel.send(covidembed);
   }
