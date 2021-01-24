@@ -1,0 +1,16 @@
+{
+  "name": "covidinfobot",
+  "version": "1.0.0",
+  "description": "covid tracker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "chairiel azizi",
+  "license": "ISC",
+  "dependencies": {
+    "covid19-api": "^1.2.1",
+    "covidapi": "^0.5.0",
+    "discord.js": "^12.5.1"
+  }
+}
